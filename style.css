@@ -1,0 +1,22 @@
+.show-border {
+  border-radius: 5;
+  border-style: solid;
+  border-color: blue;
+}
+
+.carousel-height {
+  height: 100px;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  filter: invert(100%);
+}
+
+.carousel-inner > .item > img {
+  margin: 0 auto;
+}
+
+.project-item {
+  object-fit: contain;
+}
