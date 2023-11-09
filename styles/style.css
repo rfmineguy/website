@@ -19,4 +19,9 @@
 
 .project-item {
   object-fit: contain;
+	transition: all .2s ease-in-out;
+}
+
+.project-item:hover {
+  transform: scale(1.05);
 }
