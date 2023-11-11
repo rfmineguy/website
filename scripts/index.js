@@ -1,6 +1,3 @@
-// root node where project elements live
-const project_container = document.getElementById("project-container");
-const modal_container   = document.getElementById("modal-container");
 const projects = {
 	"mirror_lib": {
 		"name": "Mirror Lib",
@@ -32,7 +29,10 @@ const projects = {
 	}
 }
 
+// root node where project elements live
+const project_container = document.getElementById("project-container");
+const modal_container   = document.getElementById("modal-container");
 for (p in projects) {
-	project_container.appendChild(genProjectElement(projects[p]));
-	modal_container.appendChild(genModalElement(projects[p]));
+	project_container.prepend(genProjectElement(projects[p]));
+	modal_container.prepend(genModalElement(projects[p]));
 }
