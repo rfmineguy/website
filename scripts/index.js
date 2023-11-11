@@ -20,7 +20,7 @@ const projects = {
 		"link": "https://github.com/rfmineguy/firefly-lib.git",
 		"image":"assets/fflib_pong.png"
 	},
-	"6502": {
+	"6502 Emu": {
 		"name": "6502 Emu",
 		"id":   "_6502_id",
 		"desc": "A 6502 cpu emulator",

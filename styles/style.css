@@ -25,3 +25,18 @@
 .project-item:hover {
   transform: scale(1.05);
 }
+
+.top-space {
+	position: relative;
+	top: 150px;
+}
+
+.header {
+	position: fixed;
+	width: 100%;
+	top: 0;
+}
+
+body {
+	padding-top: 60px; /* gives room for navbar */
+}
