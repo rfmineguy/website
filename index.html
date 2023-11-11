@@ -42,36 +42,15 @@
     <!-- Projects -->
     <div class="container-lg p-5">
       <h2>Projects</h2>
-      <div class="row text-center">
-        <!-- MirrorLib -->
-        <div class="col-sm-4 p-2">
-          <div class="card" type="button" data-bs-toggle="modal" data-bs-target="#mirror_lib_modal">
-            <img src="assets/mirror_lib_50.png" alt=".." class="project-item">
-          </div>
-        </div>
-        <!-- FFLib -->
-        <div class="col-sm-4 p-2">
-          <div class="card" type="button" data-bs-toggle="modal" data-bs-target="#ff_lib_modal">
-						<img src="assets/fflib_pong.png" alt=".." class="project-item">
-					</div>
-				</div>
-        <!-- RFLang -->
-				<div class="col-sm-4 p-2">
-          <div class="card" type="button" data-bs-toggle="modal" data-bs-target="#rflang_modal">
-            <img src="assets/rflang_logo.png" alt=".." class="project-item">
-          </div>
-        </div>
-        <!-- 6502emu -->
-        <div class="col-sm-4 p-2">
-          <div class="card" type="button" data-bs-toggle="modal" data-bs-target="#_6502emu_modal">
-            <img src="assets/6502emu.png" alt=".." class="project-item">
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4 p-2">
+      <div id="project-container" class="row text-center">
+				<!-- Javascript generates the project entries here -->
         <div>See <a href="https://github.com/rfmineguy">Github for more</a></div>
       </div>
     </div>
+
+		<div id="modal-container">
+
+		</div>
 
     <hr class="hr hr-blurry" />
 
@@ -172,12 +151,9 @@
       </div>
     </div>
 
-    <div id="project_list">
-    </div>
-
     <!-- Modals -->
     <!-- MirrorLib -->
-    <div class="modal fade" id="mirror_lib_modal" tabindex="-1" aria-labelledby="mirror_lib_label" aria-hidden="true">
+    <div class="modal fade" id="_mirror_lib_modal" tabindex="-1" aria-labelledby="mirror_lib_label" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
