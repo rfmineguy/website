@@ -33,6 +33,7 @@ function newElement(html_tag, class_list, attribute_list, child_list) {
 	* 			- the `name` of the project
 	* 			- the `desc` of the project
 	* 			- the `link` to the project
+	* 			- the `image` of the project
 	* */
 function genModalElement(project) {
 	let modal_attrs = [
@@ -72,6 +73,7 @@ function genModalElement(project) {
 	* 			- the `name` of the project
 	* 			- the `desc` of the project
 	* 			- the `link` to the project
+	* 			- the `image` of the project
 	* */
 function genProjectElement(project) {
 	const card_attrs = [

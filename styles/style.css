@@ -40,3 +40,12 @@
 body {
 	padding-top: 60px; /* gives room for navbar */
 }
+
+canvas {
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 800px;
+}
