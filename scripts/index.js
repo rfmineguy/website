@@ -29,9 +29,27 @@ const projects = [
 	}
 ]
 
+const my_workspace = [
+	{
+		"name": "Obsession",
+		"link": "subpages/obsession/obsession.html",
+		"enabled": true
+	},
+	{
+		"name": "Future Project",
+		"link": "subpages/future/future.html",
+		"enabled": false
+	}
+]
+
 const project_container = document.getElementById("project-container");
 const modal_container   = document.getElementById("modal-container");
-for (p in projects) {
-	project_container.prepend(genProjectElement(projects[p]));
-	modal_container.prepend(genModalElement(projects[p]));
+for (i in projects) {
+	project_container.prepend(genProjectElement(projects[i]));
+	modal_container.prepend(genModalElement(projects[i]));
+}
+
+const workspace_dropdown = document.getElementById("dropdown-container");
+for (i in my_workspace) {
+	workspace_dropdown.append(genWorkspaceItem(my_workspace[i]));
 }

@@ -94,3 +94,25 @@ function genProjectElement(project) {
 	]);
 }
 
+/**
+	* Generate an html project element populatd with the fields in 'project'
+	* @param {dictionary} project
+	* 		A dictionary containing the information of the modal such as
+	* 			- the `id` of the modal
+	* 			- the `name` of the project
+	* 			- the `desc` of the project
+	* 			- the `link` to the project
+	* 			- the `image` of the project
+	* */
+function genWorkspaceItem(workspace_item) {
+	const wrksp_attr = [
+		{name:"href", value:workspace_item.link}
+	]
+	return newElement("li", [], [], [
+		/* Note: only the "disabled" string actually does anything. 
+		* 			"enabled" is there just for symmetry */
+		newElement("a", ["dropdown-item", workspace_item.enabled ? "enabled": "disabled"], wrksp_attr, [ 
+			document.createTextNode(workspace_item.name) 
+		])
+	]);
+}
