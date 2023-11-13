@@ -33,7 +33,12 @@ const my_workspace = [
 	{
 		"name": "Obsession",
 		"link": "subpages/obsession/obsession.html",
-		"enabled": true
+		"enabled": false
+	},
+	{
+		"name": "Chat App",
+		"link": "subpages/chatapp/chatapp.html",
+		"enabled": false
 	},
 	{
 		"name": "Future Project",
