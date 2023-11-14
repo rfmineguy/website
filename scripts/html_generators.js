@@ -103,7 +103,7 @@ function genProjectElement(project) {
 	* 			- the `desc` of the project
 	* 			- the `link` to the project
 	* 			- the `image` of the project
-	* */
+	**/
 function genWorkspaceItem(workspace_item) {
 	const wrksp_attr = [
 		{name:"href", value:workspace_item.link}
@@ -114,5 +114,15 @@ function genWorkspaceItem(workspace_item) {
 		newElement("a", ["dropdown-item", workspace_item.enabled ? "enabled": "disabled"], wrksp_attr, [ 
 			document.createTextNode(workspace_item.name) 
 		])
+	]);
+}
+
+function genChatAppEntry(time, message) {
+	const msg_attr = [
+		{name:"style", value:"border-left: solid"}
+	]
+	return newElement("div", ["row"], [], [
+		newElement("p", ["col-sm-1", "p-2"], [], [ document.createTextNode(time) ]),
+		newElement("p", ["col-sm-10", "p-2"], msg_attr, [ document.createTextNode(message) ])
 	]);
 }
