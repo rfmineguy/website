@@ -33,12 +33,20 @@ const my_workspace = [
 	{
 		"name": "Obsession",
 		"link": "subpages/obsession/obsession.html",
-		"enabled": false
+		"enabled": true,
+		"status": "WIP"
 	},
 	{
 		"name": "Chat App",
 		"link": "subpages/chatapp/chatapp.html",
-		"enabled": false
+		"enabled": true,
+		"status": "WIP"
+	},
+	{
+		"name": "Word Counter",
+		"link": "subpages/word_counter/word_counter.html",
+		"enabled": true,
+		"status": "WIP"
 	}
 ]
 
@@ -53,3 +61,5 @@ const workspace_dropdown = document.getElementById("dropdown-container");
 for (i in my_workspace) {
 	workspace_dropdown.append(genWorkspaceItem(my_workspace[i]));
 }
+
+// project_container.append(testClickListener());

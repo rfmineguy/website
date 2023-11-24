@@ -11,16 +11,19 @@
 	* 	A list of children to add to this element
 	* 	Can be chained together as demonstrated below in @genModalElement and @genProjectElement
 	* */
-function newElement(html_tag, class_list, attribute_list, child_list) {
+function newElement(html_tag, class_list, attribute_list, child_list, events=[]) {
 	const el = document.createElement(html_tag);
-	for (let cclass of class_list) {
-		el.classList.add(cclass);
+	for (let classs of class_list) {
+		el.classList.add(classs);
 	}
 	for (let attribute of attribute_list) {
 		el.setAttribute(attribute.name, attribute.value);
 	}
 	for (let child of child_list) {
 		el.appendChild(child);
+	}
+	for (let event of events) {
+		el.addEventListener(event.event, event.func);
 	}
 	return el;
 }
@@ -109,20 +112,48 @@ function genWorkspaceItem(workspace_item) {
 		{name:"href", value:workspace_item.link}
 	]
 	return newElement("li", [], [], [
-		/* Note: only the "disabled" string actually does anything. 
-		* 			"enabled" is there just for symmetry */
 		newElement("a", ["dropdown-item", workspace_item.enabled ? "enabled": "disabled"], wrksp_attr, [ 
-			document.createTextNode(workspace_item.name) 
+			document.createTextNode(`${workspace_item.name} (${workspace_item.status})`)
 		])
 	]);
 }
 
-function genChatAppEntry(time, message) {
+function genChatAppEntry(time, user, message) {
 	const msg_attr = [
 		{name:"style", value:"border-left: solid"}
 	]
+	const button_attr = [
+		{name:"style", value:"width: 10; margin: 3px;"}
+	]
+	const button_events = [
+		{name:"click", value: () => 
+			{
+				
+			}
+		}
+	]
 	return newElement("div", ["row"], [], [
-		newElement("p", ["col-sm-1", "p-2"], [], [ document.createTextNode(time) ]),
-		newElement("p", ["col-sm-10", "p-2"], msg_attr, [ document.createTextNode(message) ])
+		newElement("button", ["col-sm-1", "p-2"], button_attr, [ document.createTextNode("X") ]),
+		newElement("p",      ["col-sm-1", "p-2"], [], [ document.createTextNode(time) ]),
+		newElement("p",      ["col-sm-1", "p-2"], msg_attr, [ document.createTextNode(user) ]),
+		newElement("p",      ["col-sm-7", "p-2"], msg_attr, [ document.createTextNode(message) ])
 	]);
+}
+
+function testClickListener() {
+	const events = [
+		{
+			"event": "click",
+			"func": () => { console.log("Hello world"); }
+		},
+		{
+			"event": "mouseover",
+			"func": () => { console.log("Hovering"); }
+		},
+		{
+			"event": "bogus",
+			"func": () => { console.log("Bogus"); }
+		}
+	];
+	return newElement("button", [], [], [], events);
 }
