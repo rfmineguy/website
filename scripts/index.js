@@ -47,6 +47,12 @@ const my_workspace = [
 		"link": "subpages/word_counter/word_counter.html",
 		"enabled": true,
 		"status": "WIP"
+	},
+	{
+		"name": "Weather App",
+		"link": "subpages/weather_app/weather_app.html",
+		"enabled": false,
+		"status": "WIP"
 	}
 ]
 
