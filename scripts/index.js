@@ -53,7 +53,13 @@ const my_workspace = [
 		"link": "subpages/weather_app/weather_app.html",
 		"enabled": false,
 		"status": "WIP"
-	}
+	},
+	{
+		"name": "Snake",
+		"link": "subpages/snake/snake.html",
+		"enabled": true,
+		"status": "WIP"
+	},
 ]
 
 const project_container = document.getElementById("project-container");
