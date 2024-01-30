@@ -13,6 +13,7 @@ function setup() {
 	canvas.parent("canvas-parent");
 	food = randomPos();
 	snake = new Snake();
+	frameRate(15);
 }
 
 function keyPressed() {
@@ -26,9 +27,11 @@ function keyPressed() {
 
 function draw() {
 	background(100, 100, 100);
+	stroke(0, 0, 0);
 	for (let i = 0; i < GRID_SIZE; i++) {
 		for (let j = 0; j < GRID_SIZE; j++) {
 			noFill();
+			noStroke();
 			rect(i * TILE_SIZE, j * TILE_SIZE, TILE_SIZE, TILE_SIZE);
 		}
 	}

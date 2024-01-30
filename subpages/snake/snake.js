@@ -1,4 +1,4 @@
-randomPos = () => { return createVector(floor(random(GRID_SIZE)), floor(random(GRID_SIZE))) };
+randomPos = () => { return createVector(3 + floor(random(GRID_SIZE - 6)), 3 + floor(random(GRID_SIZE - 6))) };
 
 class Snake {
 	constructor() {
@@ -7,6 +7,7 @@ class Snake {
 		this.dir = createVector(1, 0);
 		this.pause = false;
 		this.dead = false;
+		this.grow();
 	}
 
 	grow() {
@@ -43,12 +44,15 @@ class Snake {
 				this.dir.set(dir);
 			}
 		}
-		if (this.pause) return;
 
+		if (this.pause) {
+			console.log(this.dir);
+			return;
+		}
 		if (frameCount % 5 === 0) {
-			this.move();
-			let collided = this.snake.filter((v) => v != this.snake[0] && v.equals(this.snake[0])).length == 1;
-			if (collided) {
+			let s = this.snake.filter((v, i) => i != 0 && v.equals(this.snake[0]));
+			let collided = () => s.length > 0;
+			if (collided()) {
 				console.log("Self collision");
 				this.dead = true;
 			}
@@ -57,22 +61,50 @@ class Snake {
 				console.log("Out of bounds");
 				this.dead = true;
 			}
+
+			this.move();
 		}
 	}
 
-	show() {
-		for (let s of this.snake) {
-			fill(0, 100, 0);
-			if (s === this.snake[0]) {
-				fill(0, 200, 0);
-			}
-			rect(s.x * TILE_SIZE + 1, s.y * TILE_SIZE + 1, TILE_SIZE - 2, TILE_SIZE - 2);
-		}
+	getSnakeCornerPositions() {
+		let corners = [];
+		const has_dir = (pos, dirx, diry) => {
+			let s = this.snake.filter((v) => v.x == pos.x + dirx && v.y == pos.y + diry);
+			console.log(s);
+		};
+		const has_up = (pos) => { return has_dir(pos, 0, 1) };
+		const has_down = (pos) => { return has_dir(pos, 0, -1) };
+		const has_right = (pos) => { return has_dir(pos, 1, 0) };
+		const has_left = (pos) => { return has_dir(pos, -1, 0) };
 
+		corners.push(this.snake[0]);
 		for (let i = 1; i < this.snake.length - 1; i++) {
-			let prev = this.snake[i - 1];
-			let next = this.snake[i + 1];
-			let curr = this.snake[i];
+			const curr = this.snake[i];
+			if (has_up(curr) && has_down(curr)) continue;
+			if (has_left(curr) && has_right(curr)) continue;
+			corners.push(curr);
 		}
+		corners.push(this.snake[this.snake.length - 1]);
+		return corners;
+	}
+
+	show() {
+		// for (let s of this.snake) {
+		// 	fill(0, 100, 0);
+		// 	if (s === this.snake[0]) {
+		// 		fill(0, 200, 0);
+		// 	}
+		// 	// rect(s.x * TILE_SIZE + 1, s.y * TILE_SIZE + 1, TILE_SIZE - 2, TILE_SIZE - 2);
+		// 	rect(s.x * TILE_SIZE, s.y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+		// }
+	
+		for (let i = 0; i < this.snake.length; i++) {
+			fill(0);
+			const prev = this.snake[i - 1];
+			const next = this.snake[i + 1];
+			const curr = this.snake[i];
+			rect(curr.x * TILE_SIZE + 2, curr.y * TILE_SIZE + 2, TILE_SIZE - 4, TILE_SIZE - 4);
+		}
+		this.getSnakeCornerPositions();
 	}
 }
